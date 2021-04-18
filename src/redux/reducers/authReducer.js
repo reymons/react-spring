@@ -1,4 +1,5 @@
 import { authAPI } from "../../api/api";
+import { initApp } from "../reducers/appReducer";
 
 const SET_AUTH_INFO = "SET_AUTH_INFO";
 
@@ -27,8 +28,10 @@ const setAuthInfo = (userId, login) => ({ type: SET_AUTH_INFO, userId, login })
 
 export const getAuthInfo = () => (dispatch) => {
   return authAPI.me().then(data => {
-    if (data.message === "Authorized") {
+    if (data && data.message === "Authorized") {
       dispatch(setAuthInfo(data.userId, data.login))
+    } else {
+      dispatch(initApp());
     }
   })
 }
