@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import Banner from './components/Banner/Banner';
 import Header from './components/Header/Header';
 import { initializeApp } from './redux/reducers/appReducer';
 import { isInitialized } from './redux/selectors/appSelectors';
+import styles from './App.module.scss'
+import Login from './components/Login/Login';
 
 const App = ({ initializeApp,  initialized }) => {
   useEffect(() => {
@@ -21,7 +24,11 @@ const App = ({ initializeApp,  initialized }) => {
 
   return (
     <BrowserRouter>
+      <Login/>
       <Header/>
+      <div className={styles.page}>
+        <Banner/>
+      </div>
     </BrowserRouter>
   )
 }
