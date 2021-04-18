@@ -7,6 +7,7 @@ $btn-bgColor: #0c2738b2;
 
 .container {
   background-color: rgb(189, 155, 155);
+  min-height: 250px;
   height: 70vh;
   max-height: 80vh;
   background: url(./../../assets/img/banner.jpg) no-repeat center;
@@ -31,7 +32,7 @@ $btn-bgColor: #0c2738b2;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: getEmValue(75px, $base-font);
+  padding-top: getEmValue(100px, $base-font);
 }
 
 .title {
@@ -43,7 +44,7 @@ $btn-bgColor: #0c2738b2;
 
 .tagline {
   font-family: $ff-raleway-light;
-  font-size: getEmValue(16px, $base-font);
+  font-size: getEmValue(17px, $base-font);
   letter-spacing: getEmValue(3px, $base-font);
 }
 
@@ -55,7 +56,7 @@ $btn-bgColor: #0c2738b2;
 }
 
 .btnWrapper > button {
-  font-size: getEmValue(16px, $base-font);
+  font-size: getEmValue(17px, $base-font);
   padding: getEmValue(16px, $base-font) getEmValue(60px, $base-font);
   font-family: $ff-raleway-medium;
   border: none;
@@ -75,7 +76,7 @@ $btn-bgColor: #0c2738b2;
 
 @media (max-width: $mq-large-screen) {
   .container {
-    font-size: 15px;
+    font-size: 13px;
   }
   .col1 {
     flex-basis: 20%;
@@ -85,7 +86,7 @@ $btn-bgColor: #0c2738b2;
   }
 }
 
-@media (max-width: $mq-tablet) {
+@media (max-width: $mq-laptop) {
   .container {
     background-image: none;
     background-color: rgb(12, 12, 12)
