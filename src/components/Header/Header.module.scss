@@ -13,6 +13,7 @@ $link-margin: 40px;
   position: fixed;
   width: 100%;
   flex-wrap: wrap;
+  z-index: 998;
 }
 
 .list {
@@ -30,6 +31,7 @@ $link-margin: 40px;
 .link {
   color: #fff;
   @include createTransition(color, 200ms, 50ms, liner);
+  cursor: pointer;
 }
 
 .link:hover {
@@ -98,7 +100,7 @@ $line-height: 2px;
 }
 
 // Adaptation
-@media (max-width: $mq-tablet) {
+@media (max-width: $mq-laptop) {
   .list {
     max-height: 0;
     display: block;
