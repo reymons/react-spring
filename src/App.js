@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import './App.css';
+import { BrowserRouter } from 'react-router-dom';
+import Header from './components/Header/Header';
 import { initializeApp } from './redux/reducers/appReducer';
-import { getAuthInfo } from './redux/reducers/authReducer';
 import { isInitialized } from './redux/selectors/appSelectors';
 
 const App = ({ initializeApp,  initialized }) => {
@@ -12,15 +12,24 @@ const App = ({ initializeApp,  initialized }) => {
 
   if (!initialized) {
     // TODO: Insert a nice preloader
-    return <h1>Loading...</h1>
+    return (
+      <>
+        <h1>Loading...</h1>
+      </>
+    )
   }
 
   return (
-    <>Header</>
+    <BrowserRouter>
+      <Header/>
+    </BrowserRouter>
   )
 }
 
-export default connect(
-  (state) => ({ initialized: isInitialized(state) }), 
-  { initializeApp, getAuthInfo }
-)(App);
+const mapStateToProps = (state) => {
+  return {
+    initialized: isInitialized(state)
+  }
+}
+
+export default connect(mapStateToProps, { initializeApp })(App);
