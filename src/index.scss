@@ -6,6 +6,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   font-family: inherit;
   font-weight: inherit;
 }
@@ -21,9 +23,7 @@ a {
 
 body {
   min-height: 100vh;
-  scroll-behavior: smooth;
   line-height: 1.5;
-  text-rendering: optimizeSpeed;
   font-family: 'Raleway-Light', sans-serif;
 }
 
