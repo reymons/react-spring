@@ -1,12 +1,8 @@
 @import './../../assets/scss/mixinsAndFuncs.scss';
+@import './../../assets/scss/constants.scss';
 
-$base-font: 15px;
-
-// Media query breakpoints
-$mq-phone: 480px;
-$mq-tablet: 768px;
-$mq-laptop: 1024px;
-$mq-large-screen: 1200px;
+$base-font: 14px;
+$link-margin: 40px;
 
 .header {
   background-color: #111111;
@@ -24,7 +20,7 @@ $mq-large-screen: 1200px;
 }
 
 .listItem {
-  margin-right: getEmValue(25px, $base-font);
+  margin-right: getEmValue($link-margin, $base-font);
 }
 
 .listItem:last-child {
@@ -33,12 +29,12 @@ $mq-large-screen: 1200px;
 
 .link {
   color: #fff;
-  @include createTransition(color, 200ms, 50ms, ease-in-out);
+  @include createTransition(color, 200ms, 50ms, liner);
 }
 
 .link:hover {
   color: #5aa8e7;
-  @include createTransition(color, 200ms, 50ms, ease-in-out);
+  @include createTransition(color, 200ms, 50ms, liner);
 }
 
 $line-width: 30px;
@@ -106,15 +102,21 @@ $line-height: 2px;
   .list {
     max-height: 0;
     display: block;
-    visibility: hidden;
-  }
-  .list.active {
     flex-basis: 100%;
     order: 3;
+    visibility: hidden;
+    overflow: hidden;
+    @include createTransition((max-height, visibility, margin-top), 
+    (500ms, 0ms, 200ms), 
+    (0ms, 500ms, 300ms), 
+    (ease-out, linear, linear))
+  }
+  .list.active {
+    display: block;
     margin-top: 25px;
     visibility: visible;
-    display: block;
     max-height: 250px;
+    overflow: hidden;
     transition: max-height 900ms ease-out;
   }
   .listItem {
