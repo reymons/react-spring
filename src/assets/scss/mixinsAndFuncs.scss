@@ -5,6 +5,23 @@
   transition-timing-function: $transFunc;
 }
 
-@function getEmValue($dividend, $divisor) {
-  @return $dividend / $divisor * 1em;
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+      @return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}
+
+@function getEmValue($dividend, $divisor: 16px) {
+  @if $divisor > 0 {
+    @return strip-unit($dividend) / strip-unit($divisor) * 1em;
+  } 
+  @else {
+    @return 1em;
+  }
+}
+
+@mixin centerBlock($width) {
+  width: $width;
+  margin: 0 auto;
 }
