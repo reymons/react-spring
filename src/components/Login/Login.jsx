@@ -3,12 +3,16 @@ import LoginForm from './Forms/LoginForm';
 import RegisterForm from './Forms/RegisterForm';
 import styles from './Login.module.scss';
 
-const Login = () => {
+const Login = ({ isFormOpen, closeForm }) => {
   const [isLogin, setIsLogin] = useState(true);
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.containerWrapper}>
+    <div className={styles.wrapper} onClick={closeForm} style={{
+      visibility: isFormOpen ? "visible" : "hidden",
+      backgroundColor: isFormOpen ? "rgba(0, 0, 0, 0.774)" : "transparent",
+      opacity: isFormOpen ? "1" : "0"
+    }}>
+      <div className={styles.containerWrapper} onClick={(e) => e.stopPropagation()}>
         <svg display="none">
           <symbol viewBox="0 0 512.001 512.001" id="cancelIcon">
             <g>
@@ -20,7 +24,7 @@ const Login = () => {
             </g>
           </symbol>
         </svg>
-        <svg className ={styles.cancelIcon}>
+        <svg className ={styles.cancelIcon} onClick={closeForm}>
           <use xlinkHref="#cancelIcon"></use>
         </svg>
         <div className={styles.container}>

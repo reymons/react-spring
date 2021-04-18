@@ -4,18 +4,16 @@
 
 $base-font: 16px;
 
-.page {
-  opacity: 0.5;
-}
-
 .wrapper {
   height: 100vh;
   width: 100%;
-  background: transparent;
-  position: absolute;
+  background-color: rgba(0, 0, 0, 0.774);
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 999;
+  @include createTransition((background-color, opacity, visibility), 500ms, 0, ease-in-out);
 }
 
 .containerWrapper {
@@ -77,17 +75,19 @@ input:last-child {
 .btn {
   $fs: getEmValue(15px, $base-font);
   font-size: $fs;
-  padding: getEmValue(8px, $fs) getEmValue(30px, $fs);
-  background-color: transparent;
+  width: 100%;
+  padding: getEmValue(15px, $fs) 0;
+  background-color: #000;
   border: 1px solid black;
+  color: #fff;
   margin-top: getEmValue(30px, $fs);
   cursor: pointer;
   @include createTransition((color, background-color), 200ms, 0, ease-out);
 }
 
 .btn:hover {
-  color: #fff;
-  background-color: #000;
+  background-color: #fff;
+  color: #000;
   @include createTransition((color, background-color), 200ms, 0, ease-out);
 }
 
@@ -96,8 +96,8 @@ input:last-child {
   cursor: pointer;
   width: getEmValue(25px, $base-font);
   height: getEmValue(25px, $base-font);
-  top: getEmValue(-30px, $base-font);
-  right: getEmValue(-30px, $base-font);
+  top: getEmValue(-35px, $base-font);
+  right: getEmValue(-35px, $base-font);
   position: absolute;
   transition: fill 100ms ease-out;
 }
