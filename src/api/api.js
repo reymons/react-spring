@@ -7,6 +7,12 @@ const inst = axios.create({
 
 export const authAPI = {
   me() {
-    return inst.get("auth/me").then(response => response.data);
+    return inst.get("auth/me").then(res => res.data);
+  },
+  register({ login, password, name, surname, phoneNumber, email, sex }) {
+    return inst.put("auth/login", {
+      login, password, name, surname, 
+      phoneNumber, email, sex
+    }, {}).then(res => res.data);
   }
 }

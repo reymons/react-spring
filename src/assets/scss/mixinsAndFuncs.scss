@@ -5,16 +5,16 @@
   transition-timing-function: $transFunc;
 }
 
-@function strip-unit($number) {
-  @if type-of($number) == 'number' and not unitless($number) {
-      @return $number / ($number * 0 + 1);
-  }
-  @return $number;
-}
+// @function strip-unit($number) {
+//   @if type-of($number) == 'number' and not unitless($number) {
+//       @return $number / ($number * 0 + 1);
+//   }
+//   @return $number;
+// }
 
 @function getEmValue($dividend, $divisor: 16px) {
   @if $divisor > 0 {
-    @return strip-unit($dividend) / strip-unit($divisor) * 1em;
+    @return $dividend / $divisor * 1em;
   } 
   @else {
     @return 1em;

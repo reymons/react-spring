@@ -4,11 +4,118 @@
 
 $base-font: 16px;
 
-.container {
+.page {
+  opacity: 0.5;
+}
+
+.wrapper {
+  height: 100vh;
+  width: 100%;
+  background: transparent;
   position: absolute;
-  top: 20%;
-  left: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.containerWrapper {
   max-height: 1080px;
-  width: 60%;
+  width: getEmValue(500px, $base-font);
   font-size: $base-font;
+  position: relative;
+}
+
+.container {
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.411);
+}
+
+.header {
+  display: flex;
+}
+
+.headerBtn {
+  cursor: pointer;
+  flex-basis: 50%;
+  text-align: center;
+  font-family: $ff-raleway-medium;
+  padding: getEmValue(10px, $base-font);
+  font-size: getEmValue(20px, $base-font);
+}
+
+.form {
+  background-color: #fff;
+  padding: 25px;
+}
+
+.shortInputs {
+  display: flex;
+  justify-content: space-between;
+}
+
+.shortInputs > input {
+  flex-basis: 49.5%;
+}
+
+input {
+  outline: none;
+  width: 100%;
+  height: getEmValue(60px, $base-font);
+  padding: 0 getEmValue(20px, $base-font);
+  margin-bottom: getEmValue(20px, $base-font);
+  border: 1px solid black;
+  font-size: 14px;
+}
+
+input:last-child {
+  margin-bottom: 0;
+}
+
+.btnWrapper {
+  text-align: center;
+}
+
+.btn {
+  $fs: getEmValue(15px, $base-font);
+  font-size: $fs;
+  padding: getEmValue(8px, $fs) getEmValue(30px, $fs);
+  background-color: transparent;
+  border: 1px solid black;
+  margin-top: getEmValue(30px, $fs);
+  cursor: pointer;
+  @include createTransition((color, background-color), 200ms, 0, ease-out);
+}
+
+.btn:hover {
+  color: #fff;
+  background-color: #000;
+  @include createTransition((color, background-color), 200ms, 0, ease-out);
+}
+
+.cancelIcon {
+  fill: #fff;
+  cursor: pointer;
+  width: getEmValue(25px, $base-font);
+  height: getEmValue(25px, $base-font);
+  top: getEmValue(-30px, $base-font);
+  right: getEmValue(-30px, $base-font);
+  position: absolute;
+  transition: fill 100ms ease-out;
+}
+
+@media (max-width: 1379px) {
+  .containerWrapper {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: $mq-phone) {
+  .cancelIcon {
+    position: static;
+    display: block;
+    margin-left: auto;
+    margin-bottom: 15px;
+  }
+  .containerWrapper {
+    padding: 0 10px;
+  }
 }
