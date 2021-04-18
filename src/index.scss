@@ -1,0 +1,33 @@
+@import './../src/assets/scss/fonts.scss';
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-weight: inherit;
+}
+
+ul, li {
+  list-style: none;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  line-height: 1.5;
+  text-rendering: optimizeSpeed;
+  font-family: 'Raleway-Light', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Raleway-Medium', sans-serif;
+  font-weight: normal;
+}
