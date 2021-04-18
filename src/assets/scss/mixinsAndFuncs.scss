@@ -1,0 +1,10 @@
+@mixin createTransition($props, $durations, $delays, $transFunc) {
+  transition-property: $props;
+  transition-duration: $durations;
+  transition-delay: $delays;
+  transition-timing-function: $transFunc;
+}
+
+@function getEmValue($dividend, $divisor) {
+  @return $dividend / $divisor * 1em;
+}
