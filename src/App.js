@@ -6,7 +6,6 @@ import Header from './components/Header/Header';
 import { initializeApp } from './redux/reducers/appReducer';
 import { isInitialized } from './redux/selectors/appSelectors';
 import styles from './App.module.scss'
-import Login from './components/Login/Login';
 
 const App = ({ initializeApp,  initialized }) => {
   useEffect(() => {
@@ -24,7 +23,6 @@ const App = ({ initializeApp,  initialized }) => {
 
   return (
     <BrowserRouter>
-      <Login/>
       <Header/>
       <div className={styles.page}>
         <Banner/>
@@ -35,7 +33,7 @@ const App = ({ initializeApp,  initialized }) => {
 
 const mapStateToProps = (state) => {
   return {
-    initialized: isInitialized(state)
+    initialized: isInitialized(state),
   }
 }
 
