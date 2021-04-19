@@ -3,7 +3,7 @@
 @import './../../assets/scss/constants.scss';
 
 $base-font: 15px;
-$btn-bgColor: #0c2738b2;
+$btn-bgColor: #0c2738a1;
 
 .container {
   background-color: rgb(189, 155, 155);
@@ -70,7 +70,7 @@ $btn-bgColor: #0c2738b2;
 
 .btnWrapper > button:hover {
   color: #fff;
-  box-shadow: inset 0 0 20px rgb(8, 42, 65), 0 0 15px 5px #0f3249;
+  box-shadow: inset 0 0 20px rgb(8, 42, 65), 0 0 5px 5px #0f3249;
   @include createTransition((color, box-shadow), 200ms, 0, ease-in-out);
 }
 

@@ -15,9 +15,10 @@ const App = ({ initializeApp,  initialized }) => {
   if (!initialized) {
     // TODO: Insert a nice preloader
     return (
-      <>
-        <h1>Loading...</h1>
-      </>
+      <div className={styles.preloaderContainer}>
+        <div className={styles.preloader}></div>
+        <div className={styles.preloaderLoader}></div>
+      </div>
     )
   }
 

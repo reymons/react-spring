@@ -1,18 +1,18 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom"
 import { logOut } from "../../redux/reducers/authReducer";
 import { isAuth } from "../../redux/selectors/authSelectors";
-import Login from "../Login/Login";
+import Login from "./Login/Login";
 import AuthMenu from "./AuthMenu";
 import styles from "./Header.module.scss";
+import { toggleAuthForm } from "../../redux/reducers/formReducer";
+import { isAuthForm } from "../../redux/selectors/formSelectors";
 
-const Header = ({ isAuth }) => {
+const Header = ({ isAuth, toggleAuthForm, isAuthForm }) => {
   const menuLine = useRef();
   const list = useRef();
   const body = useRef(document.body);
-
-  const [isFormOpen, setIsFormOpen] = useState(false);
 
   const toggleMenu = () => {
     menuLine.current.classList.toggle(styles.active);
@@ -20,18 +20,18 @@ const Header = ({ isAuth }) => {
   }
 
   const openForm = () => {
-    setIsFormOpen(true);
+    toggleAuthForm(true);
     body.current.style.overflow = "hidden";
   }
 
   const closeForm = () => {
-    setIsFormOpen(false);
+    toggleAuthForm(false);
     body.current.style.overflow = "auto";
   }
 
   return (
     <>
-      <Login isFormOpen={isFormOpen} closeForm={closeForm}/>
+      { isAuthForm && <Login closeForm={closeForm}/>}
       <header className={styles.header}>
         <div className={styles.menuLineWrapper} onClick={toggleMenu}>
           <div className={styles.menuLine} ref={menuLine}></div>
@@ -55,7 +55,8 @@ const Header = ({ isAuth }) => {
 const mapStateToProps = (state) => {
   return {
     isAuth: isAuth(state),
+    isAuthForm: isAuthForm(state)
   }
 }
 
-export default connect(mapStateToProps, { logOut })(Header);
+export default connect(mapStateToProps, { logOut, toggleAuthForm })(Header);

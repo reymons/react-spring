@@ -20,9 +20,10 @@ const AuthMenu = ({ login, logOut }) => {
   }
 
   const handleMouseLeave = () => {
+    // I don't like this solution, but it was the fastest one
     setTimeout(() => {
       !mouseOnAuthMenu.current && closeAuthMenu()
-    }, 1000)
+    }, 500)
   }
 
   return (

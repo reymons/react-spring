@@ -1,18 +1,20 @@
 import { useState } from 'react';
+import { connect } from 'react-redux';
+import { isAuth } from '../../../redux/selectors/authSelectors';
 import LoginForm from './Forms/LoginForm';
 import RegisterForm from './Forms/RegisterForm';
 import styles from './Login.module.scss';
 
-const Login = ({ isFormOpen, closeForm }) => {
+const Login = ({ closeForm, isAuth }) => {
   const [isLogin, setIsLogin] = useState(true);
 
   return (
-    <div className={styles.wrapper} onClick={closeForm} style={{
-      visibility: isFormOpen ? "visible" : "hidden",
-      backgroundColor: isFormOpen ? "rgba(0, 0, 0, 0.774)" : "transparent",
-      opacity: isFormOpen ? "1" : "0"
+    <div className={styles.wrapper} onMouseDown={closeForm} style={{
+      visibility: "visible",
+      backgroundColor: "rgba(0, 0, 0, 0.774)",
+      opacity: "1"
     }}>
-      <div className={styles.containerWrapper} onClick={(e) => e.stopPropagation()}>
+      <div className={styles.containerWrapper} onMouseDown={(e) => e.stopPropagation()}>
         <svg display="none">
           <symbol viewBox="0 0 512.001 512.001" id="cancelIcon">
             <g>
@@ -42,11 +44,11 @@ const Login = ({ isFormOpen, closeForm }) => {
             isLogin
             ?
             <div className={`${styles.form} ${styles.loggingIn}`}>
-              <LoginForm closeForm={closeForm}/>
+              <LoginForm closeForm={closeForm} isAuth={isAuth}/>
             </div>
             :
             <div className={`${styles.form} ${styles.registration}`}>
-              <RegisterForm closeForm={closeForm}/>
+              <RegisterForm closeForm={closeForm} isAuth={isAuth}/>
             </div>
           }
         </div>
@@ -55,4 +57,10 @@ const Login = ({ isFormOpen, closeForm }) => {
   )
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+  return {
+    isAuth: isAuth(state)
+  }
+}
+
+export default connect(mapStateToProps, {})(Login);

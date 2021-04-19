@@ -1,6 +1,6 @@
-@import './../../assets/scss/constants.scss';
-@import './../../assets/scss/mixinsAndFuncs.scss';
-@import './../../assets/scss/fonts.scss';
+@import './../../../assets/scss/constants.scss';
+@import './../../../assets/scss/mixinsAndFuncs.scss';
+@import './../../../assets/scss/fonts.scss';
 
 $base-font: 16px;
 
@@ -50,8 +50,9 @@ $base-font: 16px;
   justify-content: space-between;
 }
 
-.shortInputs > input {
-  flex-basis: 49.5%;
+.inputContainer {
+  margin-bottom: getEmValue(20px, $base-font);
+  flex-basis: 49%;
 }
 
 input {
@@ -59,13 +60,19 @@ input {
   width: 100%;
   height: getEmValue(60px, $base-font);
   padding: 0 getEmValue(20px, $base-font);
-  margin-bottom: getEmValue(20px, $base-font);
   border: 1px solid black;
   font-size: 14px;
 }
 
 input:last-child {
   margin-bottom: 0;
+}
+
+.error {
+  display: block;
+  color: red;
+  margin-top: getEmValue(10px, $base-font);
+  font-size: $base-font - 3px;
 }
 
 .btnWrapper {
@@ -82,12 +89,19 @@ input:last-child {
   margin-top: getEmValue(30px, $base-font);
   cursor: pointer;
   @include createTransition((color, background-color), 200ms, 0, ease-out);
+  outline: none;
 }
 
-.btn:hover {
+.btn:enabled:hover {
   background-color: #fff;
   color: #000;
   @include createTransition((color, background-color), 200ms, 0, ease-out);
+}
+
+.btn:disabled {
+  cursor: default;
+  line-height: getEmValue(20px, $base-font);
+  background-color: #fff;
 }
 
 .cancelIcon {
@@ -101,8 +115,11 @@ input:last-child {
   transition: fill 100ms ease-out;
 }
 
-.error {
-  color: red;
+.preloader {
+  width: 100%;
+  height: getEmValue(18px, $base-font);
+  background: no-repeat center url('./../../../assets/preloaders/buttonPreloader.gif');
+  background-size: contain;
 }
 
 @media (max-width: 1379px) {

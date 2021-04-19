@@ -1,5 +1,6 @@
 import { authAPI } from "../../api/api";
 import { initApp } from "../reducers/appReducer";
+import { toggleAuthForm, toggleFetching } from "./formReducer";
 
 const SET_AUTH_INFO = "SET_AUTH_INFO";
 
@@ -37,9 +38,14 @@ export const getAuthInfo = () => (dispatch) => {
 
 export const registerUser = (registerData) => {
   return (dispatch) => {
+    dispatch(toggleFetching(true));
     authAPI.register(registerData).then(data => {
       if (data.message === "Registered") {
-        dispatch(getAuthInfo());
+        Promise.resolve(dispatch(getAuthInfo()))
+          .then(() => {
+            dispatch(toggleAuthForm(false));
+            dispatch(toggleFetching(false));
+          })
       }
     })
   }
@@ -47,9 +53,14 @@ export const registerUser = (registerData) => {
 
 export const logIn = (loginData) => {
   return (dispatch) => {
+    dispatch(toggleFetching(true));
     authAPI.logIn(loginData).then(data => {
       if (data.message === "Logged in") {
-        dispatch(getAuthInfo());
+        Promise.resolve(dispatch(getAuthInfo()))
+          .then(() => {
+            dispatch(toggleAuthForm(false));
+            dispatch(toggleFetching(false));
+          })
       }
     })
   }
