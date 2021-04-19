@@ -29,14 +29,12 @@ const Login = ({ isFormOpen, closeForm }) => {
         </svg>
         <div className={styles.container}>
           <div className={styles.header}>
-            <p className={styles.headerBtn} onClick={() => setIsLogin(true)} style={{ 
-              backgroundColor: isLogin ? '#fff' : '#f0f0f0'
-            }}>
+            <p className={styles.headerBtn} onClick={() => setIsLogin(true)} 
+              style={{ backgroundColor: isLogin ? '#fff' : '#f0f0f0'}}>
               Вход
             </p>
-            <p className={styles.headerBtn} onClick={() => setIsLogin(false)} style={{ 
-              backgroundColor: !isLogin ? '#fff' : '#f0f0f0'
-            }}>
+            <p className={styles.headerBtn} onClick={() => setIsLogin(false)} 
+              style={{ backgroundColor: !isLogin ? '#fff' : '#f0f0f0'}}>
               Регистрация
             </p>
           </div>
@@ -44,11 +42,11 @@ const Login = ({ isFormOpen, closeForm }) => {
             isLogin
             ?
             <div className={`${styles.form} ${styles.loggingIn}`}>
-              <LoginForm/>
+              <LoginForm closeForm={closeForm}/>
             </div>
             :
             <div className={`${styles.form} ${styles.registration}`}>
-              <RegisterForm/>
+              <RegisterForm closeForm={closeForm}/>
             </div>
           }
         </div>

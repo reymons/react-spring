@@ -26,6 +26,7 @@ const App = ({ initializeApp,  initialized }) => {
       <Header/>
       <div className={styles.page}>
         <Banner/>
+        <div className={styles.scroll}></div>
       </div>
     </BrowserRouter>
   )

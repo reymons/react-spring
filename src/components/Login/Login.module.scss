@@ -73,14 +73,13 @@ input:last-child {
 }
 
 .btn {
-  $fs: getEmValue(15px, $base-font);
-  font-size: $fs;
+  font-size: 14px;
   width: 100%;
-  padding: getEmValue(15px, $fs) 0;
+  padding: getEmValue(15px, $base-font) 0;
   background-color: #000;
   border: 1px solid black;
   color: #fff;
-  margin-top: getEmValue(30px, $fs);
+  margin-top: getEmValue(30px, $base-font);
   cursor: pointer;
   @include createTransition((color, background-color), 200ms, 0, ease-out);
 }
@@ -100,6 +99,10 @@ input:last-child {
   right: getEmValue(-35px, $base-font);
   position: absolute;
   transition: fill 100ms ease-out;
+}
+
+.error {
+  color: red;
 }
 
 @media (max-width: 1379px) {

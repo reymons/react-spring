@@ -1,9 +1,6 @@
-import { authAPI } from "../../api/api";
-
 const SET_USER_INFO = "SET_USER_INFO";
 
 const initState = { 
-  id: null, 
   name: null, 
   surnam: null, 
   phoneNumber: null, 
@@ -16,7 +13,6 @@ const userReducer = (state = initState, action) => {
     case SET_USER_INFO:
       return {
         ...state,
-        id: action.id,
         name: action.name,
         surname: action.surname,
         phoneNumber: action.phoneNumber,
@@ -28,19 +24,8 @@ const userReducer = (state = initState, action) => {
   }
 }
 
-const initUser = ({ id, name, surname, phoneNumber, email, sex }) => {
-  return { type: SET_USER_INFO, id, name, surname, phoneNumber, email, sex }
-}
-
-export const registerUser = ({ login, name, surname, password, phoneNumber, email, sex }) => {
-  return (dispatch) => {
-    dispatch(authAPI.register())
-      .then(data => {
-        if (data.message === "Registered") {
-          dispatch(initUser(data));
-        }
-      })
-  }
-}
+// const setUserInfo = ({ name, surname, phoneNumber, email, sex }) => {
+//   return { type: SET_USER_INFO, name, surname, phoneNumber, email, sex }
+// }
 
 export default userReducer;

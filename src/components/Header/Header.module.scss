@@ -99,6 +99,29 @@ $line-height: 2px;
   transform: rotate(-45deg);
 }
 
+.authMenu {
+  position: absolute;
+  right: getEmValue(25px, $base-font);
+  top: getEmValue(35px, $base-font);
+  background-color: #fff;
+  border-radius: 3px;
+  padding: getEmValue(10px, $base-font) getEmValue(15px, $base-font);
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.39);
+  @include createTransition((opacity, visibility), 100ms, 0, linear)
+}
+
+.authItem {
+  margin-bottom: getEmValue(8px, $base-font);
+}
+
+.authItem:last-child {
+  margin-bottom: 0;
+}
+
+.authLink {
+  color: #000;
+}
+
 // Adaptation
 @media (max-width: $mq-laptop) {
   .list {

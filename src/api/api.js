@@ -14,5 +14,13 @@ export const authAPI = {
       login, password, name, surname, 
       phoneNumber, email, sex
     }, {}).then(res => res.data);
+  },
+  logIn({ login, password }) {
+    return inst.post("auth/login", { login, password }, {})
+      .then(res => res.data);
+  },
+  logOut() {
+    return inst.delete("auth/login", {})
+      .then(res => res.data);
   }
 }
