@@ -2,10 +2,10 @@ import { useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { logOut } from '../../redux/reducers/authReducer';
-import { getLogin } from '../../redux/selectors/authSelectors';
+import { allowed, getLogin } from '../../redux/selectors/authSelectors';
 import styles from './Header.module.scss';
 
-const AuthMenu = ({ login, logOut }) => {
+const AuthMenu = ({ login, logOut, allowed }) => {
   const [authMenu, setAuthMenu] = useState(false);
   const mouseOnAuthMenu = useRef(false);
 
@@ -40,7 +40,15 @@ const AuthMenu = ({ login, logOut }) => {
             <NavLink className={`${styles.link} ${styles.authLink}`} to="/profile">
               Мой профиль
             </NavLink>
+          </li>
+          {
+            allowed &&
+            <li className={styles.authItem}>
+              <NavLink className={`${styles.link} ${styles.authLink}`} to="/manage">
+                Управление аккаунтом
+              </NavLink>
             </li>
+          }
           <li className={styles.authItem}>
             <NavLink className={`${styles.link} ${styles.authLink}`} to="/" onClick={logOut}>
               Выйти
@@ -54,7 +62,8 @@ const AuthMenu = ({ login, logOut }) => {
 
 const mapStateToProps = (state) => {
   return {
-    login: getLogin(state)
+    login: getLogin(state),
+    allowed: allowed(state)
   }
 }
 
