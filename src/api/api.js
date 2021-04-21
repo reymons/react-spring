@@ -17,7 +17,7 @@ export const authAPI = {
   },
   logIn({ login, password }) {
     return inst.post("/auth/login", { login, password }, {})
-.then(res => res.data);
+      .then(res => res.data);
   },
   logOut() {
     return inst.delete("/auth/login", {})
@@ -32,6 +32,17 @@ export const carAPI = {
   },
   getBySize(size) {
     return inst.get(`/cars?size=${size}`)
+      .then(res => res.data);
+  },
+  search(query) {
+    return inst.get(`/cars/search?query=${query}`)
+      .then(res => res.data);
+  }
+}
+
+export const showAPI = {
+  order(carId, userId, date) {
+    return inst.post("/show", { carId, userId, date }, {})
       .then(res => res.data);
   }
 }

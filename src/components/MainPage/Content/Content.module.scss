@@ -8,7 +8,7 @@ $base-font: 16px;
   font-size: $base-font;
   background-color: #111;
   color: #fff;
-  padding: 1em 0;
+  padding: 2em 0;
   position: relative;
 }
 
@@ -39,16 +39,17 @@ $base-font: 16px;
 .container {
   min-width: 200px;
   @include centerBlock(70%);
+  overflow: hidden;
 }
 
 .title {
   text-align: center;
   font-size: 1.5em;
+  line-height: normal;
 }
 
 .carList {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -59,8 +60,8 @@ $base-font: 16px;
 
 .carImg {
   display: inline-block;
-  width:  300px;
-  height: 300px;
+  width:  18.75em;
+  height: 18.75em;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -83,6 +84,7 @@ $base-font: 16px;
   font-size: 1.15em;
   position: relative;
   transition: color 200ms ease-in-out;
+  display: block;
 }
 
 .carLink::before {
@@ -99,4 +101,20 @@ $base-font: 16px;
 .carLink:hover {
   color: rgb(46, 88, 107);
   transition: color 200ms ease-in-out;
+}
+
+@media (max-width: 1380px) {
+  .wrapper {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 1060px) {
+  .carItem {
+    flex: 0 1 100%;
+  }
+  .carItem:nth-child(2),
+  .carItem:nth-child(3) {
+    display: none;
+  }
 }

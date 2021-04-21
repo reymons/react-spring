@@ -1,0 +1,98 @@
+
+$base-font: 16px;
+
+.wrapper {
+  width: 100%;
+  min-height: 200px;
+  font-size: $base-font;
+  padding: 2em 0;
+}
+
+.container {
+  width: 20%;
+  margin: 0 auto;
+  min-width: 300px;
+}
+
+.title {
+  font-size: 1.5em;
+  text-align: center;
+  line-height: normal;
+  margin-bottom: 1.25em;
+}
+
+.inputWrapper {
+  margin-bottom: 1em;
+}
+
+.inputWrapper:nth-child(1) {
+  position: relative;
+}
+
+.inputWrapper:nth-child(1) > input {
+  position: relative;
+  z-index: 12;
+}
+
+.input {
+  border: 1px solid black;
+  border-radius: 50px;
+}
+
+.btnWrapper {
+  text-align: center;
+}
+
+.btn {
+  font-size: 1em;
+  padding: .8em 2em;
+  border-radius: 50px;
+  border: 1px solid black;
+  background-color: rgb(255, 255, 255);
+  cursor: pointer;
+  outline: none;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  border: 1px solid rgba(0, 0, 0, 0.404);
+}
+
+.foundCars {
+  position: absolute;
+  width: 100%;
+  border-top: none;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  padding-top: 2em;
+  padding-bottom: 1em;
+  background-color: #fff;
+  z-index: 10;
+  top: 30px;
+  left: 0;
+  border: 1px solid rgb(0, 0, 0)
+}
+
+.carList {
+  padding-left: 1.3em;
+}
+
+.car {
+  cursor: pointer;
+  margin-bottom: .3em;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
+
+.fetch {
+  background: url(./../../../assets/preloaders/buttonPreloader.gif) no-repeat center;
+  background-size: contain;
+  height: 1.5em;
+  width: 100%;
+}
+
+@media (max-width: 1380px) {
+  .wrapper {
+    font-size: 13px;
+  }
+}

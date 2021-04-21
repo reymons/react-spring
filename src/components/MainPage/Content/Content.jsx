@@ -12,10 +12,11 @@ const shorten = (description, length = 250) => {
   return description;
 }
 
-const SIZE = 6;
+const SIZE = 5;
 
 const Content = ({ cars, isFetching, requestCarsBySize }) => {
   const [carElems, setCarElems] = useState(null);
+  const [size, setSize] = useState(3)
 
   useEffect(() => {
     requestCarsBySize(SIZE);
@@ -49,7 +50,7 @@ const Content = ({ cars, isFetching, requestCarsBySize }) => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.arrow} onClick={handleLeftArrowClick}>
+      <div className={styles.arrow} onClick={handleLeftArrowClick} >
         <i className="fas fa-chevron-left"></i>
       </div>
       <div className={styles.container}>
@@ -57,7 +58,7 @@ const Content = ({ cars, isFetching, requestCarsBySize }) => {
         <ul className={styles.carList}>
           {
             carElems
-              ?.filter((carEl, id) => id < 3)
+              ?.filter((carEl, id) => id < size)
               .map(car =>
                 <li key={car.id} className={styles.carItem}>
                   <div className={styles.carImg} style={{ backgroundImage: `url(${car.image})` }}></div>

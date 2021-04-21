@@ -7,6 +7,7 @@ import { isInitialized } from './redux/selectors/appSelectors';
 import styles from './App.module.scss'
 import MainPage from './components/MainPage/MainPage';
 import ManagePage from './components/ManagePage/ManagePage';
+import Footer from './components/Footer/Footer';
 
 const App = ({ initializeApp,  initialized }) => {
   useEffect(() => {
@@ -30,6 +31,7 @@ const App = ({ initializeApp,  initialized }) => {
         <Route exact path="/" render={() => <MainPage/>}/>
         <Route path="/manage" render={() => <ManagePage/>}/>
       </div>
+      <Footer/>
     </BrowserRouter>
   )
 }
