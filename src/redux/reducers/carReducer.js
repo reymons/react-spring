@@ -2,10 +2,12 @@ import { carAPI, inst } from "../../api/api";
 
 const SET_CURRENT = "SET_CURRENT";
 const SET_ALL = "SET_ALL";
+const SET_FETCHING = "SET_FETCHING";
 
 const initState = {
   current: null,
-  all: []
+  all: [],
+  isFetching: false
 }
 
 const carReducer = (state = initState, action) => {
@@ -22,26 +24,25 @@ const carReducer = (state = initState, action) => {
         }
       }
 
-      case SET_ALL:
-        const cars = action.cars
-          .map(
-            car => ({ 
-              id: car.carId,
-              model: car.model,
-              date: car.releaseDate,
-              description: car.description,
-              image: inst.defaults.baseURL + car.image 
-            })
-          )
-          .filter(car => !state.all.find(c => c.id === car.id))
+    case SET_ALL:
+      const cars = action.cars
+        .map(
+          car => ({ 
+            id: car.carId,
+            model: car.model,
+            date: car.releaseDate,
+            description: car.description,
+            image: inst.defaults.baseURL + car.image 
+          })
+        )
+        .filter(car => !state.all.find(c => c.id === car.id))
+      return {
+        ...state,
+        all: [ ...state.all, ...cars]
+      }
 
-        return {
-          ...state,
-          all: [
-            ...state.all,
-            ...cars,
-          ]
-        }
+    case SET_FETCHING:
+      return { ...state, isFetching: action.isFetching }
 
     default:
       return state;
@@ -56,11 +57,15 @@ const setAll = (cars) => {
   return { type: SET_ALL, cars }
 }
 
+const setFetching = (isFetching) => {
+  return { type: SET_FETCHING, isFetching }
+}
+
 export const requestCar = (id) => {
   return (dispatch) => {
     carAPI.get(id).then(data => {
       if (data.resultCode === 1) {
-        dispatch(setCurrent(data.car))
+        dispatch(setCurrent(data.car));
       }
     })
   }
@@ -68,10 +73,12 @@ export const requestCar = (id) => {
 
 export const requestCarsBySize = (size) => {
   return (dispatch) => {
+    dispatch(setFetching(true));
     carAPI.getBySize(size).then(data => {
       if (data.resultCode === 1) {
         dispatch(setAll(data.cars))
       }
+      dispatch(setFetching(false));
     })
   }
 }
