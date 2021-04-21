@@ -41,14 +41,14 @@ const AuthMenu = ({ login, logOut, allowed }) => {
               Мой профиль
             </NavLink>
           </li>
-          {
-            allowed &&
-            <li className={styles.authItem}>
-              <NavLink className={`${styles.link} ${styles.authLink}`} to="/manage">
-                Управление аккаунтом
-              </NavLink>
-            </li>
-          }
+        {
+          allowed &&
+          <li className={styles.authItem}>
+            <NavLink className={`${styles.link} ${styles.authLink}`} to="/manage">
+              Управление сайтом
+            </NavLink>
+          </li>
+        }
           <li className={styles.authItem}>
             <NavLink className={`${styles.link} ${styles.authLink}`} to="/" onClick={logOut}>
               Выйти

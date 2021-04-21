@@ -1,6 +1,6 @@
-@import './../../assets/scss/mixinsAndFuncs.scss';
-@import './../../assets/scss/fonts.scss';
-@import './../../assets/scss/constants.scss';
+@import './../../../assets/scss/mixinsAndFuncs.scss';
+@import './../../../assets/scss/fonts.scss';
+@import './../../../assets/scss/constants.scss';
 
 $base-font: 15px;
 $btn-bgColor: #0c2738a1;
@@ -10,7 +10,7 @@ $btn-bgColor: #0c2738a1;
   min-height: 250px;
   height: 70vh;
   max-height: 80vh;
-  background: url(./../../assets/img/banner.jpg) no-repeat center;
+  background: url(./../../../assets/img/banner.jpg) no-repeat center;
   background-size: cover;
   font-size: $base-font;
   display: flex;

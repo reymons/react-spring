@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
-import Banner from './components/Banner/Banner';
+import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import { initializeApp } from './redux/reducers/appReducer';
 import { isInitialized } from './redux/selectors/appSelectors';
 import styles from './App.module.scss'
+import MainPage from './components/MainPage/MainPage';
+import ManagePage from './components/ManagePage/ManagePage';
 
 const App = ({ initializeApp,  initialized }) => {
   useEffect(() => {
@@ -26,7 +27,8 @@ const App = ({ initializeApp,  initialized }) => {
     <BrowserRouter>
       <Header/>
       <div className={styles.page}>
-        <Banner/>
+        <Route exact path="/" render={() => <MainPage/>}/>
+        <Route path="/manage" render={() => <ManagePage/>}/>
       </div>
     </BrowserRouter>
   )
