@@ -1,0 +1,76 @@
+@import "./../../../assets/scss/mixinsAndFuncs.scss";
+@import "./../../../assets/scss/fonts.scss";
+
+$base-font: 16px;
+
+.wrapper {
+  width: 100%;
+  font-size: $base-font;
+  background-color: #111;
+  color: #fff;
+  padding: 1em 0;
+}
+
+.container {
+  min-width: 200px;
+  @include centerBlock(80%);
+}
+
+.title {
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.carList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.carItem {
+  flex-basis: 23%;
+  text-align: center;
+}
+
+.carModel {
+  margin-bottom: 0.5em;
+}
+
+.carDescription {
+  max-height: 100px;
+  overflow: hidden;
+  position: relative;
+}
+
+.dots {
+  font-size: 2em;
+}
+
+.carImg {
+  display: inline-block;
+  width:  300px;
+  height: 300px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.carLink {
+  font-size: 1.15em;
+  position: relative;
+}
+
+.carLink::before {
+  content: "";
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.521);
+  width: 100%;
+  opacity: 1;
+  transition: opacity 100ms ease-in-out;
+  display: block;
+  margin: 1em 0;
+}
+
+.carLink:hover {
+  color: rgb(46, 88, 107)
+}

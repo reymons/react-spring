@@ -26,8 +26,10 @@ const carReducer = (state = initState, action) => {
         const cars = action.cars
           .map(
             car => ({ 
-              ...car,
-              id: car.carId, 
+              id: car.carId,
+              model: car.model,
+              date: car.releaseDate,
+              description: car.description,
               image: inst.defaults.baseURL + car.image 
             })
           )
