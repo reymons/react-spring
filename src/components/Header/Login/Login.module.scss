@@ -61,7 +61,7 @@ input {
   height: getEmValue(60px, $base-font);
   padding: 0 getEmValue(20px, $base-font);
   border: 1px solid black;
-  font-size: 14px;
+  font-size: 1em;
 }
 
 input:last-child {
@@ -80,7 +80,7 @@ input:last-child {
 }
 
 .btn {
-  font-size: 14px;
+  font-size: 1em;
   width: 100%;
   padding: getEmValue(15px, $base-font) 0;
   background-color: #000;

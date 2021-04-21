@@ -19,14 +19,15 @@ const schema = yup.object().shape({
     .required("Необходимо ввести пароль")
 })
 
-const LoginForm = ({ isAuthForm, logIn, isFetching }) => {
+const LoginForm = ({ logIn, isFetching }) => {
   const { register, handleSubmit, formState: { errors } } = useForm({
     mode: "onChange",
     resolver: yupResolver(schema)
   });
 
   const onFormSubmit = (data) => {
-    logIn(data);
+    Promise.resolve(logIn(data))
+      .then(() => document.body.style.overflow = "auto");
   }
 
   return (

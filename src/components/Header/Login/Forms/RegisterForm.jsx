@@ -53,7 +53,8 @@ const RegisterForm = ({ registerUser, isFetching }) => {
   });
 
   const onFormSubmit = (data) => {
-    registerUser(data);
+    Promise.resolve(registerUser(data))
+      .then(() => document.body.style.overflow = "auto");
   }
 
   // const normalizePhoneNumber = (e) => {
