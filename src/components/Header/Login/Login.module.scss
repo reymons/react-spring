@@ -1,0 +1,141 @@
+@import './../../../assets/scss/constants.scss';
+@import './../../../assets/scss/mixinsAndFuncs.scss';
+@import './../../../assets/scss/fonts.scss';
+
+$base-font: 16px;
+
+.wrapper {
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.774);
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  @include createTransition((background-color, opacity, visibility), 500ms, 0, ease-in-out);
+}
+
+.containerWrapper {
+  max-height: 1080px;
+  width: getEmValue(500px, $base-font);
+  font-size: $base-font;
+  position: relative;
+}
+
+.container {
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.411);
+}
+
+.header {
+  display: flex;
+}
+
+.headerBtn {
+  cursor: pointer;
+  flex-basis: 50%;
+  text-align: center;
+  font-family: $ff-raleway-medium;
+  padding: getEmValue(10px, $base-font);
+  font-size: getEmValue(20px, $base-font);
+}
+
+.form {
+  background-color: #fff;
+  padding: 25px;
+}
+
+.shortInputs {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inputContainer {
+  margin-bottom: getEmValue(20px, $base-font);
+  flex-basis: 49%;
+}
+
+input {
+  outline: none;
+  width: 100%;
+  height: getEmValue(60px, $base-font);
+  padding: 0 getEmValue(20px, $base-font);
+  border: 1px solid black;
+  font-size: 1em;
+}
+
+input:last-child {
+  margin-bottom: 0;
+}
+
+.error {
+  display: block;
+  color: red;
+  margin-top: getEmValue(10px, $base-font);
+  font-size: $base-font - 3px;
+}
+
+.btnWrapper {
+  text-align: center;
+}
+
+.btn {
+  font-size: 1em;
+  width: 100%;
+  padding: getEmValue(15px, $base-font) 0;
+  background-color: #000;
+  border: 1px solid black;
+  color: #fff;
+  margin-top: getEmValue(30px, $base-font);
+  cursor: pointer;
+  @include createTransition((color, background-color), 200ms, 0, ease-out);
+  outline: none;
+}
+
+.btn:enabled:hover {
+  background-color: #fff;
+  color: #000;
+  @include createTransition((color, background-color), 200ms, 0, ease-out);
+}
+
+.btn:disabled {
+  cursor: default;
+  line-height: getEmValue(20px, $base-font);
+  background-color: #fff;
+}
+
+.cancelIcon {
+  fill: #fff;
+  cursor: pointer;
+  width: getEmValue(25px, $base-font);
+  height: getEmValue(25px, $base-font);
+  top: getEmValue(-35px, $base-font);
+  right: getEmValue(-35px, $base-font);
+  position: absolute;
+  transition: fill 100ms ease-out;
+}
+
+.preloader {
+  width: 100%;
+  height: getEmValue(18px, $base-font);
+  background: no-repeat center url('./../../../assets/preloaders/buttonPreloader.gif');
+  background-size: contain;
+}
+
+@media (max-width: 1379px) {
+  .containerWrapper {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: $mq-phone) {
+  .cancelIcon {
+    position: static;
+    display: block;
+    margin-left: auto;
+    margin-bottom: 15px;
+  }
+  .containerWrapper {
+    padding: 0 10px;
+  }
+}

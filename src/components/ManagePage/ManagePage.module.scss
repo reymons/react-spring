@@ -1,0 +1,55 @@
+@import './../../assets/scss/constants.scss';
+@import './../../assets/scss/fonts.scss';
+@import './../../assets/scss/mixinsAndFuncs.scss';
+
+$base-font: 15px;
+$border-color: rgba(0, 0, 0, 0.267);
+
+.wrapper {
+  font-size: $base-font;
+  height: 95vh;
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  width: 70%;
+  height: 80%;
+}
+
+.sidebar {
+  flex-basis: 20%;
+  border-right: 1px solid $border-color;
+  height: 100%;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  height: inherit;
+}
+
+.navItem {
+  cursor: pointer;
+  width: 100%;
+  text-align: right;
+  padding-right: 2em;
+}
+
+.navLink {
+  display: inline-block;
+  font-size: 1.125em;
+  line-height: 2em;
+  outline: none;
+}
+
+.navLink:hover {
+  border-bottom: 3px solid $border-color;
+}
+
+.activeLink {
+  border-bottom: 3px solid $border-color;
+}

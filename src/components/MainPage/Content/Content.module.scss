@@ -1,0 +1,120 @@
+@import "./../../../assets/scss/mixinsAndFuncs.scss";
+@import "./../../../assets/scss/fonts.scss";
+
+$base-font: 16px;
+
+.wrapper {
+  width: 100%;
+  font-size: $base-font;
+  background-color: #111;
+  color: #fff;
+  padding: 2em 0;
+  position: relative;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  cursor: pointer;
+}
+
+.arrow:first-child {
+  left: 4.6875em;
+}
+
+.arrow:last-child {
+  right: 4.6875em;
+}
+
+.arrow > i {
+  font-size: 2.1875em;
+  transition: color 200ms ease-in-out;
+}
+
+.arrow > i:hover {
+  color:rgb(46, 88, 107);
+  transition: color 200ms ease-in-out;
+}
+
+.container {
+  min-width: 200px;
+  @include centerBlock(70%);
+  overflow: hidden;
+}
+
+.title {
+  text-align: center;
+  font-size: 1.5em;
+  line-height: normal;
+}
+
+.carList {
+  display: flex;
+  justify-content: space-between;
+}
+
+.carItem {
+  flex-basis: 23%;
+  text-align: center;
+}
+
+.carImg {
+  display: inline-block;
+  width:  18.75em;
+  height: 18.75em;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.carModel {
+  margin-bottom: 0.5em;
+}
+
+.carDescription {
+  overflow: hidden;
+  position: relative;
+}
+
+.dots {
+  font-size: 2em;
+}
+
+.carLink {
+  font-size: 1.15em;
+  position: relative;
+  transition: color 200ms ease-in-out;
+  display: block;
+}
+
+.carLink::before {
+  content: "";
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.521);
+  width: 100%;
+  opacity: 1;
+  transition: opacity 100ms ease-in-out;
+  display: block;
+  margin: 1.25em 0;
+}
+
+.carLink:hover {
+  color: rgb(46, 88, 107);
+  transition: color 200ms ease-in-out;
+}
+
+@media (max-width: 1380px) {
+  .wrapper {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 1060px) {
+  .carItem {
+    flex: 0 1 100%;
+  }
+  .carItem:nth-child(2),
+  .carItem:nth-child(3) {
+    display: none;
+  }
+}

@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
-import Banner from './components/Banner/Banner';
+import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import { initializeApp } from './redux/reducers/appReducer';
 import { isInitialized } from './redux/selectors/appSelectors';
 import styles from './App.module.scss'
-import Login from './components/Login/Login';
+import MainPage from './components/MainPage/MainPage';
+import ManagePage from './components/ManagePage/ManagePage';
+import Footer from './components/Footer/Footer';
 
 const App = ({ initializeApp,  initialized }) => {
   useEffect(() => {
@@ -16,26 +17,28 @@ const App = ({ initializeApp,  initialized }) => {
   if (!initialized) {
     // TODO: Insert a nice preloader
     return (
-      <>
-        <h1>Loading...</h1>
-      </>
+      <div className={styles.preloaderContainer}>
+        <div className={styles.preloader}></div>
+        <div className={styles.preloaderLoader}></div>
+      </div>
     )
   }
 
   return (
     <BrowserRouter>
-      <Login/>
       <Header/>
       <div className={styles.page}>
-        <Banner/>
+        <Route exact path="/" render={() => <MainPage/>}/>
+        <Route path="/manage" render={() => <ManagePage/>}/>
       </div>
+      <Footer/>
     </BrowserRouter>
   )
 }
 
 const mapStateToProps = (state) => {
   return {
-    initialized: isInitialized(state)
+    initialized: isInitialized(state),
   }
 }
 

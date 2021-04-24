@@ -2,4 +2,25 @@
 
 .page {
   padding-top: 40px;
+  transition: opacity 500ms ease-in-out;
+}
+
+.preloaderContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preloader {
+  width: 60%;
+  height: 75px;
+  background: no-repeat center url(./assets/preloaders/appPreloader.gif);
+  background-size: contain;
+}
+
+.preloaderLoader {
+  background: no-repeat center url(./assets/preloaders/buttonPreloader.gif);
+  visibility: hidden;
 }

@@ -15,10 +15,10 @@ const appReducer = (state = initState, action) => {
   }
 }
 
-const initApp = () => ({ type: INIT_APP })
+export const initApp = () => ({ type: INIT_APP })
 
 export const initializeApp = () => (dispatch) => {
-  dispatch(getAuthInfo()).then(() => dispatch(initApp()))
+  dispatch(getAuthInfo()).then(() => dispatch(initApp()));
 }
 
 export default appReducer;

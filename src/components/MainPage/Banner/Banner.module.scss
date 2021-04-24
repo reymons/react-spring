@@ -1,15 +1,16 @@
-@import './../../assets/scss/mixinsAndFuncs.scss';
-@import './../../assets/scss/fonts.scss';
-@import './../../assets/scss/constants.scss';
+@import './../../../assets/scss/mixinsAndFuncs.scss';
+@import './../../../assets/scss/fonts.scss';
+@import './../../../assets/scss/constants.scss';
 
 $base-font: 15px;
-$btn-bgColor: #0c2738b2;
+$btn-bgColor: #0c2738a1;
 
 .container {
   background-color: rgb(189, 155, 155);
-  height: 70vh;
-  max-height: 80vh;
-  background: url(./../../assets/img/banner.jpg) no-repeat center;
+  min-height: 250px;
+  height: 95.81vh;
+  max-height: 100vh;
+  background: url(./../../../assets/img/banner.jpg) no-repeat center;
   background-size: cover;
   font-size: $base-font;
   display: flex;
@@ -31,7 +32,7 @@ $btn-bgColor: #0c2738b2;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: getEmValue(75px, $base-font);
+  padding-top: getEmValue(100px, $base-font);
 }
 
 .title {
@@ -43,8 +44,8 @@ $btn-bgColor: #0c2738b2;
 
 .tagline {
   font-family: $ff-raleway-light;
-  font-size: getEmValue(16px, $base-font);
-  letter-spacing: getEmValue(3px, $base-font);
+  font-size: getEmValue(17px, $base-font);
+  letter-spacing: getEmValue(2px, $base-font);
 }
 
 .btnWrapper {
@@ -55,7 +56,7 @@ $btn-bgColor: #0c2738b2;
 }
 
 .btnWrapper > button {
-  font-size: getEmValue(16px, $base-font);
+  font-size: getEmValue(17px, $base-font);
   padding: getEmValue(16px, $base-font) getEmValue(60px, $base-font);
   font-family: $ff-raleway-medium;
   border: none;
@@ -69,13 +70,13 @@ $btn-bgColor: #0c2738b2;
 
 .btnWrapper > button:hover {
   color: #fff;
-  box-shadow: inset 0 0 20px rgb(8, 42, 65), 0 0 15px 5px #0f3249;
+  box-shadow: inset 0 0 20px rgb(8, 42, 65), 0 0 5px 5px #0f3249;
   @include createTransition((color, box-shadow), 200ms, 0, ease-in-out);
 }
 
 @media (max-width: $mq-large-screen) {
   .container {
-    font-size: 15px;
+    font-size: 13px;
   }
   .col1 {
     flex-basis: 20%;
@@ -85,7 +86,7 @@ $btn-bgColor: #0c2738b2;
   }
 }
 
-@media (max-width: $mq-tablet) {
+@media (max-width: $mq-laptop) {
   .container {
     background-image: none;
     background-color: rgb(12, 12, 12)
