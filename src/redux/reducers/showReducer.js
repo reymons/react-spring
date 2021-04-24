@@ -2,11 +2,12 @@ import { showAPI } from "../../api/api";
 
 const SET_ORDER = "SET_ORDER";
 const SET_FETCHING = "SET_FETCHING";
+const SET_FETCHED = "SET_FETCHED";
 
 const initState = {
   orders: [],
   fetching: false,
-  fetched: true
+  fetched: false
 }
 
 const showReducer = (state = initState, action) => {
@@ -15,14 +16,18 @@ const showReducer = (state = initState, action) => {
       return { 
         ...state, 
         fetching: action.fetching,
-        fetched: false 
       }
 
     case SET_ORDER:
       return {
         ...state,
         orders: [ ...state.orders, action.order ],
-        fetched: true
+      }
+
+    case SET_FETCHED:
+      return { 
+        ...state, 
+        fetched: action.fetched 
       }
 
     default:
@@ -38,13 +43,24 @@ const setOrder = (order) => {
   return { type: SET_ORDER, order }
 }
 
+const setFetched = (fetched) => {
+  return { type: SET_FETCHED, fetched }
+}
+
 export const makeOrder = (carId, userId, date) => {
   return (dispatch) => {
     dispatch(setFetching(true));
     showAPI.order(carId, userId, date)
       .then(data => {
         if (data.resultCode === 1) {
-          dispatch(setOrder({ carId, date }));
+          Promise.all(
+            [
+              dispatch(setOrder({ carId, date })), 
+              dispatch(setFetched(true))
+            ]
+          ).then(() => {
+            setTimeout(() => dispatch(setFetched(false)), 5000) 
+          })
         }
         dispatch(setFetching(false));
       })

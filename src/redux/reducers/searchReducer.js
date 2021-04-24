@@ -2,10 +2,11 @@ import { carAPI } from "../../api/api";
 
 const SET_CARS = "SET_CARS";
 const SET_FETCHING = "SET_FETCHING";
+const SET_ERROR_MSG = "SET_ERROR_MSG";
 
 const initState = {
   cars: [],
-  fetching: false
+  fetching: false,
 }
 
 const searchReducer = (state = initState, action) => {
@@ -13,13 +14,20 @@ const searchReducer = (state = initState, action) => {
     case SET_CARS:
       return {
         ...state,
-        cars: [...action.cars]
+        cars: action.cars ? [...action.cars] : []
       }
 
     case SET_FETCHING:
       return { 
         ...state, 
         fetching: action.fetching 
+      }
+
+    case SET_ERROR_MSG:
+      console.log(action.errorMsg)
+      return {
+        ...state,
+        errorMsg: action.errorMsg
       }
 
     default:
@@ -42,7 +50,7 @@ export const searchCars = (query) => {
       if (data.resultCode === 1) {
         dispatch(setCars(data.cars));
       } else {
-        dispatch(setCars(null))
+        dispatch(setCars(null));
       }
       dispatch(setFetching(false));
     })
