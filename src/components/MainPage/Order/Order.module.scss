@@ -91,6 +91,12 @@ $base-font: 16px;
   width: 100%;
 }
 
+.success {
+  margin-top: 1.5em;
+  color: rgb(26, 190, 26);
+  font-weight: bold;
+}
+
 @media (max-width: 1380px) {
   .wrapper {
     font-size: 13px;
